@@ -14,18 +14,16 @@ public class Solution {
         // if(head == null ){
         //     return false;
         // }
-        ListNode hare = head; // fast
-        ListNode turtle = head; //slow
-
-        while(hare != null && hare.next != null){
-            hare = hare.next.next;
-            turtle = turtle.next;
-
-            if(hare==turtle){
-                return true;
-            }
+      ListNode fast = head;
+      ListNode slow = head;
+      while(fast!=null && fast.next!=null){
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow==fast){
+            return true;
         }
-        return false;
+      }
+      return false;
 
     }
 }

@@ -1,0 +1,42 @@
+import java.util.*;
+
+class Solution {
+    
+    static class Pair {
+        char ch;
+        int count;
+        
+        Pair(char ch, int count) {
+            this.ch = ch;
+            this.count = count;
+        }
+    }
+    
+    public String removeDuplicates(String s, int k) {
+        Stack<Pair> st = new Stack<>();
+        
+        for (char c : s.toCharArray()) {
+            
+            if (!st.isEmpty() && st.peek().ch == c) {
+                st.peek().count++;
+                
+                if (st.peek().count == k) {
+                    st.pop(); // remove k duplicates
+                }
+            } else {
+                st.push(new Pair(c, 1));
+            }
+        }
+        
+        // Build result
+        StringBuilder res = new StringBuilder();
+        
+        for (Pair p : st) {
+            for (int i = 0; i < p.count; i++) {
+                res.append(p.ch);
+            }
+        }
+        
+        return res.toString();
+    }
+}

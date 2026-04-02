@@ -11,7 +11,7 @@ class Solution {
         int index = -1;
         
         while (left <= right) {
-            int mid = left + (right - left) / 2;
+            int mid = (left + right) / 2;
             
             if (nums[mid] >= target) {
                 right = mid - 1;
@@ -21,6 +21,7 @@ class Solution {
             
             if (nums[mid] == target) {
                 index = mid;
+                right = mid - 1;
             }
         }
         return index;
@@ -41,6 +42,8 @@ class Solution {
             
             if (nums[mid] == target) {
                 index = mid;
+                left = mid + 1;
+               
             }
         }
         return index;
